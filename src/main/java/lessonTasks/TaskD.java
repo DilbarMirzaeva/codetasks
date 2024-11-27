@@ -19,6 +19,6 @@ public class TaskD {
                 index = i;
             }
         }
-        System.out.println(index);
+        System.out.println("index:"+index+" max:"+max);
     }
 }
