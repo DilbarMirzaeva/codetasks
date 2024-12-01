@@ -36,13 +36,12 @@ public class Employee {
     }
 
     public double calculateBonus(double percentage) {
-        return  salary * percentage / 100;
+        return salary * percentage / 100;
     }
 
-    public double calculateBonus(double percentage,double fixedAmount) {
-        return  calculateBonus(percentage)+fixedAmount;
+    public double calculateBonus(double percentage, double fixedAmount) {
+        return calculateBonus(percentage) + fixedAmount;
     }
-
 
 
 }
