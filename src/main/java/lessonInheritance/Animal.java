@@ -9,7 +9,7 @@ public class Animal {
         this.name=name;
         this.age=age;
     }
-    public void setName(){
+    public void setName(String name){
         this.name=name;
     }
     public String getName(){
