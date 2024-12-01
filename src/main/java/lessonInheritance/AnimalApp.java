@@ -3,15 +3,11 @@ package lessonInheritance;
 public class AnimalApp {
     public static void main(String[] args) {
 
-        Animal animal=new Animal("Monkey",10);
-        System.out.println(animal);
-
-        Cat cat = new Cat("myu",5,"male");
+        Cat cat = new Cat("Miki", 2, "male");
         System.out.println(cat);
 
-        Dog dog = new Dog("dg",5,"blue");
+        Dog dog = new Dog("Lessi", 3, "white");
         System.out.println(dog);
-
 
 
     }
