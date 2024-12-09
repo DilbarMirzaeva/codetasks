@@ -1,4 +1,4 @@
-package randommatching;
+package randomMatching;
 
 import java.util.Random;
 

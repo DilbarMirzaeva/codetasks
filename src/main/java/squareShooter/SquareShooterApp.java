@@ -1,4 +1,4 @@
-package squareshooter;
+package squareShooter;
 
 import java.util.Random;
 import java.util.Scanner;
