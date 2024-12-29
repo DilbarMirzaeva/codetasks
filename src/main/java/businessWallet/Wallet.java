@@ -3,15 +3,15 @@ package businessWallet;
 import java.math.BigDecimal;
 
 public class Wallet {
-    private static int walletIdNum=0;
+    private static int walletIdNum = 0;
     private int walletId;
     private User UserId;
     private BigDecimal balance;
 
-    public Wallet(User userId,BigDecimal balance) {
+    public Wallet(User userId, BigDecimal balance) {
         this.walletId = walletIdNum++;
         UserId = userId;
-        this.balance=balance;
+        this.balance = balance;
     }
 
     @Override

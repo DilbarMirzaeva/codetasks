@@ -1,12 +1,12 @@
 package businessWallet;
 
 public class User {
-    private static int UserIdNum=0;
+    private static int UserIdNum = 0;
     private int ID;
     private String name;
     private String email;
 
-    public User( String name, String email) {
+    public User(String name, String email) {
         this.ID = UserIdNum++;
         this.name = name;
         this.email = email;
@@ -16,8 +16,8 @@ public class User {
         return ID;
     }
 
-    public void setID(int ID){
-        this.ID=ID;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getName() {
