@@ -73,7 +73,7 @@ public class BankAccount {
                 System.out.println("Balance is not enough for transfer..");
             }
         }else {
-            System.out.println("Amount must be positive..");
+ System.out.println("Amount must be positive..");
         }
     }
 
