@@ -8,6 +8,8 @@ public class MainApp {
         User user2 = new User("Nigar", "nigarfem@gmail.com");
         Wallet wallet1 = new Wallet(user1, BigDecimal.valueOf(100));
         Wallet wallet2 = new Wallet(user2, BigDecimal.valueOf(50));
-        System.out.println(wallet2);
+        Transaction transaction=new Transaction("WithDraw",wallet1,BigDecimal.valueOf(90));
+        Transaction transaction1=new Transaction("transfer",wallet1,wallet2,BigDecimal.valueOf(10));
+        Transaction transaction2=new Transaction("deposit",wallet2,BigDecimal.valueOf(3000));
     }
 }

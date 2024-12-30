@@ -12,27 +12,46 @@ public class Transaction {
     private String transactionType;
     private Wallet sourceWallet;
     private Wallet destinationWallet;
+    private BigDecimal amount;
 
-    public Transaction(int transactionID, String transactionType, Wallet sourceWallet, Wallet destinationWallet) {
+    public Transaction(String transactionType, Wallet sourceWallet, Wallet destinationWallet,BigDecimal amount) {
         this.transactionID = IdNum++;
         this.date = LocalDateTime.now();
         this.transactionType = transactionType;
         this.sourceWallet = sourceWallet;
         this.destinationWallet = destinationWallet;
+        this.amount=amount;
+        System.out.println(toString());
+        transactionExecution();
     }
 
-    public Transaction(String transactionType, int transactionID, Wallet sourceWallet) {
+    public Transaction(String transactionType,  Wallet sourceWallet,BigDecimal amount) {
         this.date = LocalDateTime.now();
         this.transactionType = transactionType;
-        this.transactionID = transactionID;
+        this.transactionID = IdNum++;
         this.sourceWallet = sourceWallet;
+        this.amount=amount;
+        System.out.println(toString());
+        transactionExecution();
+    }
+
+    public void transactionExecution(){
+        if(transactionType.equalsIgnoreCase("deposit")){
+            deposit(sourceWallet,amount);
+        } else if (transactionType.equalsIgnoreCase("withdraw")) {
+            withdraw(sourceWallet,amount);
+        } else if (transactionType.equalsIgnoreCase("transfer")) {
+            transfer(sourceWallet,destinationWallet,amount);
+        }else {
+            System.out.println("Transaction type Invalid..");
+        }
     }
 
     public void deposit(Wallet wallet, BigDecimal amount) {
         if (amount.compareTo(BigDecimal.valueOf(0)) > 0) {
             wallet.setBalance(wallet.getBalance().add(amount));
             ;
-            System.out.println("Amount(" + amount + ") added to this(" + wallet.getWalletId() + ") account");
+            System.out.println("Amount(" + amount + ") added to this(" + wallet.getWalletId() + ") account.Balance:"+wallet.getBalance());
         } else {
             System.out.println("Amount must be positive..");
         }
@@ -41,7 +60,8 @@ public class Transaction {
     public void withdraw(Wallet wallet, BigDecimal amount) {
         if (amount.compareTo(BigDecimal.valueOf(0)) > 0 && wallet.getBalance().compareTo(amount) >= 0) {
             wallet.setBalance(wallet.getBalance().subtract(amount));
-            System.out.println("The amount(" + amount + ") has been withdrawn from this(" + wallet.getWalletId() + ") account.");
+            System.out.println("The amount(" + amount + ") has been withdrawn from this(" + wallet.getWalletId() + ") account." +
+                    "Balance:"+wallet.getBalance());
         } else {
             System.out.println("Withdraw is unsuccessful..INVALID BALANCE..");
         }
@@ -49,9 +69,10 @@ public class Transaction {
 
     public void transfer(Wallet sourceWallet, Wallet destinationWallet, BigDecimal amount) {
         if (amount.compareTo(BigDecimal.valueOf(0)) > 0 && sourceWallet.getBalance().compareTo(amount) >= 0) {
-            this.withdraw(sourceWallet, amount);
-            this.deposit(destinationWallet, amount);
-            System.out.println("The amount(" + amount + ") was transferred from the " + sourceWallet + " account to the " + destinationWallet + " account.");
+            sourceWallet.setBalance(sourceWallet.getBalance().subtract(amount));
+            destinationWallet.setBalance(destinationWallet.getBalance().add(amount));
+            System.out.println("The amount(" + amount + ") was transferred from the " + sourceWallet.getWalletId() + " account to the " + destinationWallet.getWalletId() +
+                    " account. Balance(Wallet("+sourceWallet.getWalletId()+"):"+sourceWallet.getBalance()+" ,Wallet("+destinationWallet.getWalletId()+"):"+destinationWallet.getBalance());
         } else {
             System.out.println("Transfer is unsuccessful..");
         }
@@ -64,7 +85,7 @@ public class Transaction {
                 ", date=" + date +
                 ", transactionType='" + transactionType + '\'' +
                 ", sourceWallet=" + sourceWallet +
-                (destinationWallet == null ? "destinationType=" : "") +
+                (destinationWallet != null ? ", destinationWallet="+destinationWallet : "") +
                 '}';
     }
 
@@ -117,5 +138,11 @@ public class Transaction {
         this.destinationWallet = destinationWallet;
     }
 
+    public BigDecimal getAmount() {
+        return amount;
+    }
 
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 }
