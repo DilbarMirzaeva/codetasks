@@ -18,7 +18,7 @@ public class SelectionSort {
     }
 
     public static void selectionSort(int[] arr) {
-        System.out.println("Sorted is starting.From min to max..");
+        System.out.println("Sorted is starting. From min to max..");
         int index = 0;
         for (int i = 0; i < arr.length; i++) {
             int min = arr[i];
