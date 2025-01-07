@@ -13,13 +13,16 @@ public class User {
         this.password = password;
     }
 
-    public void registration() {
+    public void register() {
+        System.out.println("User registered: " + name + " ," + surname + " ," + email + " ," + password);
     }
 
     public void login() {
+        System.out.println("User logged in: " + email + " " + " " + password);
     }
 
     public void logout() {
+        System.out.println("User logged out: " + email);
     }
 
     public String getName() {
@@ -52,5 +55,15 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

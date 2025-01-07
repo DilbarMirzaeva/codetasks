@@ -1,23 +1,24 @@
 package smartHome;
 
-public class Device {
+public abstract class Device {
     private int id;
+    private static int idNum = 0;
     private String deviceName;
     private boolean status;
     private DeviceType deviceType;
+    private static int countDevice;
 
-    public Device(int id, String deviceName, boolean status, DeviceType deviceType) {
-        this.id = id;
+    public Device(String deviceName, DeviceType deviceType) {
+        this.id = idNum++;
         this.deviceName = deviceName;
-        this.status = status;
+        this.status = false;
         this.deviceType = deviceType;
+        countDevice++;
     }
 
-    public void turnOn() {
-    }
+    public abstract void turnOn();
 
-    public void turnOff() {
-    }
+    public abstract void turnOff();
 
     public int getId() {
         return id;
@@ -49,5 +50,14 @@ public class Device {
 
     public void setDeviceType(DeviceType deviceType) {
         this.deviceType = deviceType;
+    }
+
+    public static int getCountDevice() {
+        return countDevice;
+    }
+
+    @Override
+    public String toString() {
+        return "Device{" + "id=" + id + ", deviceName='" + deviceName + '\'' + ", status=" + status + ", deviceType=" + deviceType + '}';
     }
 }
