@@ -1,4 +1,4 @@
-package BasicLevelTasks;
+package basicLevelTasks;
 
 import java.util.ArrayList;
 import java.util.List;
