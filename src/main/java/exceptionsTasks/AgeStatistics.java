@@ -29,7 +29,7 @@ public class AgeStatistics {
         int[] ages = new int[count];
         System.arraycopy(arr, 0, ages, 0, count);
         detailsAges(ages);
-        getStatistics(ages,count);
+        getStatistics(ages, count);
 
     }
 
@@ -43,19 +43,22 @@ public class AgeStatistics {
         }
     }
 
-    public static long fact(int a) {
-        long fact = 1;
+    public static String factSafety(int age) {
+        try {
+            return String.valueOf(fact(age));
+        } catch (ArithmeticException ae) {
+           return ae.getMessage();
+        }
+    }
 
-        for (int i = 2; i <= a; i++) {
-            try {
-                fact *= i;
-                if (fact > Long.MAX_VALUE / i) {
-                    throw new ArithmeticException("Factorial limit is over");
-                }
-            } catch (ArithmeticException ae) {
-                System.out.println(ae.getMessage());
-                return -1;
-            }
+    public static long fact(int a) {
+        if(a==0 || a==1){
+            return 1;
+        }
+        long fact = 1;
+        fact =a* fact(a - 1);
+        if (fact < 0) {
+            throw new ArithmeticException("Factorial limit is over");
         }
         return fact;
     }
@@ -63,7 +66,7 @@ public class AgeStatistics {
     public static void detailsAges(int[] ages) {
         System.out.println("\nDetails for each age:");
         for (int age : ages) {
-            System.out.println("Age:" + age + "=>Factorial: " + fact(age) + ", " + evenOrOdd(age));
+            System.out.println("Age:" + age + "=>Factorial: " + factSafety(age) + ", " + evenOrOdd(age));
         }
     }
 
