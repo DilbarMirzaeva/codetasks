@@ -2,58 +2,53 @@ package humanBase.dao;
 
 import humanBase.Human;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HumanDao {
-    private List<Human> listHuman=new ArrayList<>();
+    private List<Human> listHuman = new ArrayList<>();
 
     public HumanDao() {
     }
 
-    public Human getHumanById(int Id){
-        System.out.print("Human(ID="+Id+") =>>  ");
-        for (Human h:listHuman){
-            if(h.getID()==Id){
-                return h;
+    public Human getHumanById(int Id) {
+        Human human = null;
+        System.out.print("Human(ID=" + Id + ") =>>  ");
+        for (Human h : listHuman) {
+            if (h.getID() == Id) {
+                human = h;
             }
-        }return null;
+        }
+        return human;
     }
-    public void addHuman(Human human){
+
+    public void addHuman(Human human) {
         listHuman.add(human);
     }
 
-    public void removeHuman(int id){
-        listHuman.removeIf(x->x.getID()==id);
-        System.out.println(getHumanById(id)+" was deleted.");
-
+    public void removeHuman(int id) {
+        System.out.println(getHumanById(id) + " was deleted.");
+        listHuman.removeIf(x -> x.getID() == id);
     }
 
-    public void updateHumanAge(int id,int newAge){
-        try {
-            Human human=getHumanById(id);
-            human.setAge(newAge);
-            System.out.println("Human age updated");
-        }catch (NullPointerException e){
-            System.out.println(e.getMessage());
+    public void updateHuman(int id, String fieldName, Object newValue) {
+        for (Human human : listHuman) {
+            if (human.getID() == id) {
+                try {
+                    Field field = Human.class.getDeclaredField(fieldName);
+                    field.setAccessible(true);
+                    field.set(human, newValue);
+                    System.out.println("Human(Id=" + id + ")'s " + fieldName + " was updated");
+
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
-
-    }
-    public void updateHumanName(int id,String newName){
-        try {
-            Human human=getHumanById(id);
-            human.setName(newName);
-            System.out.println("Human name updated");
-        }catch (NullPointerException e){
-            System.out.println(e.getMessage());
-        }
-
     }
 
-
-
-    @Override
-    public String toString() {
-        return     "" + listHuman ;
+    public List<Human> getListHuman() {
+        return listHuman;
     }
 }

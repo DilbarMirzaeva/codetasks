@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Human {
     private final Long ID;
-    private  String name;
+    private String name;
     private Integer age;
 
     public Human(Long ID, String name, Integer age) {
@@ -21,8 +21,8 @@ public class Human {
         return name;
     }
 
-    public void setName(String name){
-        this.name=name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getAge() {
