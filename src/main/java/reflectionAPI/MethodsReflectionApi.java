@@ -10,9 +10,6 @@ import java.lang.reflect.Method;
 
 
 public class MethodsReflectionApi {
-    public MethodsReflectionApi() {
-    }
-
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException, ClassNotFoundException {
 
         Student student1 = new Student("Dilbar", "Mirzayeva", 18);
@@ -74,6 +71,5 @@ public class MethodsReflectionApi {
     public void checkParametr(String name) {
         System.out.println("Hi," + name);
     }
-
 
 }
