@@ -1,4 +1,4 @@
-package WeekPlanner;
+package weekPlanner;
 
 import java.util.Scanner;
 
