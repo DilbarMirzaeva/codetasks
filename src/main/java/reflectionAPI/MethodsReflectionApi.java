@@ -14,6 +14,7 @@ public class MethodsReflectionApi {
     }
 
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException, ClassNotFoundException {
+
         Student student1 = new Student("Dilbar", "Mirzayeva", 18);
         Student student2 = new Student("Aida", "Guliyeva", 20);
         System.out.println(student1);
