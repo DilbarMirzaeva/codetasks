@@ -51,7 +51,7 @@ public class MethodsReflectionApi {
         System.out.println("-------------------------");
 
         Constructor<?> constructor = class1.getConstructor(String.class, String.class, int.class);
-        Object newInstance = constructor.newInstance("Nigar", "dcfvgbh", 22);
+        Object newInstance = constructor.newInstance("Nigar", "Hasanova", 22);
         System.out.println(newInstance);
 
         System.out.println("-------------------------");
