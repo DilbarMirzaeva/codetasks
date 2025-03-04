@@ -1,6 +1,6 @@
 package checkk;
 
-public class MyThread extends Thread {
+public class MyThread implements Runnable{
     private int threadNum;
 
     MyThread(int threadNum) {
@@ -10,7 +10,6 @@ public class MyThread extends Thread {
     public void run() {
         for (int i = 0; i < 5; i++) {
             System.out.println(i+"   from "+threadNum);
-
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
