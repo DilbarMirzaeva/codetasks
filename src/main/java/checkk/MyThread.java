@@ -9,7 +9,8 @@ public class MyThread implements Runnable{
 
     public void run() {
         for (int i = 0; i < 5; i++) {
-            System.out.println(i+"   from "+threadNum);
+//            System.out.println("from #"+threadNum+"ThreadNum : "+i);
+            System.out.println(Thread.currentThread().getName()+" : "+i);
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {

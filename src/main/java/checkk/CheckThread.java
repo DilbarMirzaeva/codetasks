@@ -6,11 +6,12 @@ public class CheckThread {
             MyThread myThread=new MyThread(i);
             Thread thread=new Thread(myThread);
             thread.start();
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            System.out.println(thread.isAlive());
+            System.out.println("---------");
+            System.out.println(Thread.activeCount());
+            System.out.println(Thread.currentThread().getName());
+            System.out.println("---------");
+
         }
     }
 }
