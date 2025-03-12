@@ -7,6 +7,7 @@ public class CheckThread {
             Thread thread=new Thread(myThread);
             thread.start();
             System.out.println(thread.isAlive());
+
             System.out.println("---------");
             System.out.println(Thread.activeCount());
             System.out.println(Thread.currentThread().getName());
